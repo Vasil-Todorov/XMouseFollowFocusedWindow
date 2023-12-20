@@ -1,14 +1,18 @@
-## <div style="text-align: center"> XMouseFollowFocusedWindow </div> 
-<video "src=>" **insert video**
-### Welcome to my simple program for the X11 window system designed to teleport your cursor to the currently active window when invoked.
+# <p align="center">XMouseFollowFocusedWindow </p>
 
-The point is to bind it with your shortcuts in some way, either directly, like in DWM, or indirectly, like invoking it every time a window gets focus in KDE Plasma, through the custom shortcuts.
+### <p align="center">Welcome to my simple program for the X11 window system designed to teleport your cursor to the currently active window when invoked.</p>
+
+https://github.com/Vasil-Todorov/XMouseFollowFocusedWindow/assets/154470686/5583b9fd-5f2b-4abf-ac3e-81db3530877d
+
+The goal is to bind XMFFW with your shortcuts in some way, either directly or indirectly, to include seamlessly into your workflow. 
+
+XMFFW can work well as a standalone action, or as a part of a multi action shortcut.
 
 There is no config file, you modify the values in the source and recompile in order to modify the functionality.
 
 ***
 
-#### "But C is hard! Why do I have to modify the source code in order to customise the program?" You say
+#### "But C is hard! Why do I have to modify the source code in order to customise the program?" you say?
 
 1. You do not have to look at the C code at all, just the top few lines in order to modify the values and then recompile with them.
 2. It encourages you to look under the hood of this ***very simple*** program, in order to either make modifications yourself or understand what you are running, not just believe I am not stealing all of your data.
@@ -17,10 +21,10 @@ There is no config file, you modify the values in the source and recompile in or
 
 ***
 
-### What do I do?
+### "What do I do?"
 
 In the terminal insert these commands
-> git clone **insert link**
+> git clone https://github.com/Vasil-Todorov/XMouseFollowFocusedWindow
 > 
 > sudo make install
 
@@ -61,7 +65,9 @@ Or if you want to be really fancy, you can implement my code into your dwm.c fil
 
 #### Everyone else
 
-Be creative! If you are on a tiling wm, you probably know how to implement this program into your workflow. If you do not, feel free  to PM me.
+Be creative, invoke XMFFW manually or as part of other commands, think about all of the possibilities!
+
+If you are on a tiling wm, you probably know how to implement this program into your workflow. If you do not, feel free  to PM me.
 
 If you want to share the ideas from your setup, please make a pull request, bug report, etc. I will include them here!
 
