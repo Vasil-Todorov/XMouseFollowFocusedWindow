@@ -43,35 +43,45 @@ const int DISTANCETOLERANCE=50;
 //Returns the parent window of "window" (i.e. the ancestor of window
 //that is a direct child of the root, or window itself if it is a direct child).
 //If window is the root window, returns window.
-Window getTopLevelParent(Display * display, Window window)
+Window getTopLevelParent(Display *display, Window window)
 {
-     Window parent;
-     Window root;
-     Window * children;
-     unsigned int num_children;
+	//Variables to hold the current parent, root, pointer to children, etc.
+	Window parent;
+	Window root;
+	Window *children;
+	unsigned int num_children;
 
-     //Until we have to exit because we have found the root window, go down the tree
-     while (1) {
-         if (0 == XQueryTree(display, window, &root, &parent, &children, &num_children)) 
-	 {
-             fprintf(stderr, "XQueryTree error\n");
-         }
-         if (children) { //must test for null
-             XFree(children);
-         }
-         if (window == root || parent == root) {
-             return window;
-         }
-         else 
-	 {
-             window = parent;
-         }
+	//Until we have to exit because we have found the top level window, search further
+	while (1)
+	{
+		//Query the tree of the current iteration of "window" and check if XQueryTree is "0". If true, there has been an error.
+		if (0 == XQueryTree(display, window, &root, &parent, &children, &num_children)) 
+		{
+			fprintf(stderr, "XQueryTree error\n");
+		}
+       
+		//Test for NULL with if
+		if (children) 
+       		{
+       		 	XFree(children);
+       		}
+
+		//Check if the current iteration is either the root window or its parent is the root window.
+       		//If either is true, then return the window, otherwise iterate further with the parent window as the new window to look into.
+       		if (window == root || parent == root) 
+		{
+			return window;
+       		}
+       		else 
+       		{
+       		 	window = parent;
+       		}
      }
 }
 
 
 //This function will teleport the cursor to your desired location as smooth as possible on a screen baby
-void warpSmoothly(int *destinationX, int * destinationY, int * mouseXCoordinate, int * mouseYCoordinate, Display *dsp)
+void warpSmoothly(int *destinationX, int *destinationY, int *mouseXCoordinate, int *mouseYCoordinate, Display *dsp)
 {
 	//Use doubles, as you need the precision
 	//Create ints to know in which direction we are sending the cursors and fill them
