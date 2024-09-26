@@ -11,13 +11,29 @@ XMFFW can work well as a standalone action, or as a part of a multi action short
 There is no config file, you modify the values in the source and recompile in order to modify the functionality.
 
 ***
+#### Configuration
+Right now the configuration is expected to be at `/etc/XMouseFollowFocusedWindow/config.ini`
+It will use the default values if you don't create one.
+<details>
+<summary>Example Configuration File</summary>
+    
+```ini
+[settings]
+ISSMOOTH=1
+SMOOTHINCREMENT=5
+SLEEPTIME=200
+WARPOUTSIDE=0
+ALWAYSWARP=0
+DISTANCETOLERANCE=50
+WARPYPLACE=90.0
+WARPXPLACE=90.0
+```
+</details>
 
-#### "But C is hard! Why do I have to modify the source code in order to customise the program?" you say?
 
-1. You do not have to look at the C code at all, just the top few lines in order to modify the values and then recompile with them.
-2. It encourages you to look under the hood of this ***very simple*** program, in order to either make modifications yourself or understand what you are running, not just believe I am not stealing all of your data.
-3. I am lazy and have not implemented a config file yet
-4. Might be 0.0000001s slower with a config file lookup, think of the people with hard drives, what if they have to invoke it a few times per second.
+#### "But C is hard! And my hard drive is slow! Why do I have to modify the source code or create a config file in order to customise the program?" you say?
+
+1. I am lazy and have not implemented parameters yet
 
 ***
 
@@ -113,5 +129,4 @@ If you are teleporting outside, whether or not WARPXPLACE and YPLACE are positiv
 ***
 <br> </br> 
 #### I just saw your repo, and your code is absolutely terrible!
-
-Yes, yes it is. This is my first real C project, and even if it were my 10th, it would probably still be bad. If you are a C wizard or just have an idea of how to make the project better, and/or structure the code better, please send a pull request, make a bug report, etc. I am thankful for the feedback and ideas.
+Thanks! ~ -~ ❤
