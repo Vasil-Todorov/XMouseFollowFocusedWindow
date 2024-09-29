@@ -1,14 +1,12 @@
 # <p align="center">XMouseFollowFocusedWindow </p>
 
-### <p align="center">Welcome to my simple program for the X11 window system designed to teleport your cursor to the currently active window when invoked.</p>
+### <p align="center">Welcome to my increasingly complex program for the X11 window system designed to teleport your cursor to the currently active window when invoked.</p>
 
 https://github.com/Vasil-Todorov/XMouseFollowFocusedWindow/assets/154470686/5583b9fd-5f2b-4abf-ac3e-81db3530877d
 
 The goal is to bind XMFFW with your shortcuts in some way, either directly or indirectly, to include seamlessly into your workflow. 
 
 XMFFW can work well as a standalone action, or as a part of a multi action shortcut.
-
-There is no config file, you modify the values in the source and recompile in order to modify the functionality.
 
 ***
 #### Configuration
@@ -27,6 +25,7 @@ ALWAYSWARP=0
 DISTANCETOLERANCE=50
 WARPYPLACE=90.0
 WARPXPLACE=90.0
+KEEP_RELATIVE_POSITION=0
 ```
 </details>
 
@@ -39,22 +38,85 @@ WARPXPLACE=90.0
 
 ### "How do I install XMFFW?"
 
-In the terminal insert these commands
-> git clone https://github.com/Vasil-Todorov/XMouseFollowFocusedWindow
+In the terminal insert these commands (The url shown may need to change depending on what repo you are reading this from)
+> git clone https://github.com/Weightierharpy3/XMouseFollowFocusedWindow
 > 
 > sudo make install
 
 Move the cursor away from the terminal and insert this command to see how the program works
 
-> ./xmffw
+> xmffw
 
-If it is to your liking, great! If not, please open main.c with a text editor and follow the instructions in the file to modify the program to your liking.
+## "How do I uninstall XMFFW?"
 
-After that you neeed to
+> sudo make uninstall
 
-> sudo make install
+If you want to remove leftover files from building the project 
 
-again, to update the binary that you are using
+> make clean
+
+***
+## <p align=center> Debugging Guide </p>
+
+If you encounter issues while using or developing **XMouseFollowFocusedWindow (XMFFW)**, you can utilize the debugging options provided in the Makefile to track down problems. Here are the steps and options available for debugging:
+
+#### 1. Enable Debugging Symbols
+To build the project with debugging symbols, run:
+
+> make debug
+
+This will compile the project with debugging information using `CFLAGS_DEBUG`:
+
+You can now run the program using the debug build xmffw-debug to investigate the issues
+
+> ./xmffw-debug
+
+#### 2. Debugging with Time Information (Optional)
+
+If you want to debug the timing aspects of the program, you can add additional timing information by enabling the DEBUG_TIME flag.
+
+To build with timing information:
+
+> make DEBUG_TIME=1 debug
+
+3. Debugging Environment Changes
+
+The Makefile includes an environment caching system to track changes in build flags. If your build is not reflecting changes to environment variables, the cache system might be preventing it. You can force a clean build:
+
+> make force
+
+This will clean all debug files and force a rebuild from scratch.
+
+4. Cleaning Debug Files
+
+To clean up after debugging:
+
+> make clean-debug
+
+This will remove all debug object files and binaries without affecting the release files.
+
+***
+
+## <p align=center> "What do the variables do?" </p>
+
+#### You are heavily advised to play around with these values and see what feels and looks best in your setup
+
+1. ISSMOOTH is a bool that decides whether the cursor just teleports to the desired location, or "smoothly" goes there in increments. 1 is "smooth", 0 is not
+    1. SMOOTHINCREMENT is an int that decides how large the step of the increment will be along the path
+    2. SLEEPTIME is an int which decides how long the program will sleep between increments
+
+
+2. WARPOUTSIDE is a bool that decides whether or not the cursor will be sent outside of the window.1 is outside, 0 is inside
+    1. WARPXPLACE is the place that the cursor will teleport to, along the X axis. Is a percentage of the width of the window when warping inside, and a straight pixel value when warping outside.
+    2. WARPYPLACE is the place that the cursor will teleport to, along the Y axis. Is a percentage of the height of the window when warping inside, and a straight pixel value when warping outside.
+  
+3. KEEP_RELATIVE_POSITION is a bool that decides whether the position values for WARPXPLACE & WARPYPLACE should change to the relative position of the cursor on the current window
+
+If you are teleporting outside, whether or not WARPXPLACE and YPLACE are positive or negative decides where to teleport. Negative means to the left and on top, respectively. Positive (including 0) means to the right and below, respectively.
+
+4. ALWAYSWARP is a bool that decides whether to always teleport the mouse to the desired location when XMFFW is invoked. 1 means always teleport, 0 means see where the cursor is, and decide if it needs teleportation. If the cursor is inside of the window or within an acceptable distance of the window, it does not get teleported.
+    1. DISTANCETOLERANCE is an int that describes the distance in pixels the inf. norm from the edge of the focused window, meaning extending from the window by the value of the variable in the X and Y directions. Keep in mind that it can be negative to reduce the area of the acceptable distance.
+
 ***
 
 ## <p align=center> Setup suggestions </p>
@@ -105,26 +167,6 @@ If you are on a tiling wm, you probably know how to implement this program into 
 If you want to share the ideas from your setup, please make a pull request, bug report, etc. I will include them here!
 
 I only included ideas for the use cases I have verified to work!
-
-***
-
-## <p align=center> "What do the variables do?" </p>
-
-#### You are heavily advised to play around with these values and see what feels and looks best in your setup
-
-1. ISSMOOTH is a bool that decides whether the cursor just teleports to the desired location, or "smoothly" goes there in increments. 1 is "smooth", 0 is not
-    1. SMOOTHINCREMENT is an int that decides how large the step of the increment will be along the path
-    2. SLEEPTIME is an int which decides how long the program will sleep between increments
-
-
-2. WARPOUTSIDE is a bool that decides whether or not the cursor will be sent outside of the window.1 is outside, 0 is inside
-    1. WARPXPLACE is the place that the cursor will teleport to, along the X axis. Is a percentage of the width of the window when warping inside, and a straight pixel value when warping outside.
-    2. WARPYPLACE is the place that the cursor will teleport to, along the Y axis. Is a percentage of the height of the window when warping inside, and a straight pixel value when warping outside.
-
-If you are teleporting outside, whether or not WARPXPLACE and YPLACE are positive or negative decides where to teleport. Negative means to the left and on top, respectively. Positive (including 0) means to the right and below, respectively.
-
-3. ALWAYSWARP is a bool that decides whether to always teleport the mouse to the desired location when XMFFW is invoked. 1 means always teleport, 0 means see where the cursor is, and decide if it needs teleportation. If the cursor is inside of the window or within an acceptable distance of the window, it does not get teleported.
-    1. DISTANCETOLERANCE is an int that describes the distance in pixels the inf. norm from the edge of the focused window, meaning extending from the window by the value of the variable in the X and Y directions. Keep in mind that it can be negative to reduce the area of the acceptable distance.
 
 ***
 <br> </br> 
