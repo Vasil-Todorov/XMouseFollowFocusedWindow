@@ -71,6 +71,8 @@ You can now run the program using the debug build xmffw-debug to investigate the
 
 > ./xmffw-debug
 
+If you ran `make` with `sudo` or as root, the `.env_build_cache` file might fail to write. You may need to remove it or change its permissions.
+
 #### 2. Debugging with Time Information (Optional)
 
 If you want to debug the timing aspects of the program, you can add additional timing information by enabling the DEBUG_TIME flag.
