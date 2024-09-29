@@ -39,21 +39,32 @@ KEEP_RELATIVE_POSITION=0
 ### "How do I install XMFFW?"
 
 In the terminal insert these commands (The url shown may need to change depending on what repo you are reading this from)
-> git clone https://github.com/Weightierharpy3/XMouseFollowFocusedWindow
-> 
-> sudo make install
 
+```sh
+git clone https://github.com/Weightierharpy3/XMouseFollowFocusedWindow.git
+```
+```sh
+sudo make install
+```
 Move the cursor away from the terminal and insert this command to see how the program works
 
-> xmffw
+```sh
+xmffw
+```
 
-## "How do I uninstall XMFFW?"
+### "How do I uninstall XMFFW?"
 
-> sudo make uninstall
+In the terminal insert the following command
+
+```sh
+sudo make uninstall
+```
 
 If you want to remove leftover files from building the project 
 
-> make clean
+```sh
+make clean
+```
 
 ***
 ## <p align=center> Debugging Guide </p>
@@ -63,13 +74,17 @@ If you encounter issues while using or developing **XMouseFollowFocusedWindow (X
 #### 1. Enable Debugging Symbols
 To build the project with debugging symbols, run:
 
-> make debug
+```sh
+make debug
+```
 
 This will compile the project with debugging information using `CFLAGS_DEBUG`:
 
 You can now run the program using the debug build xmffw-debug to investigate the issues
 
-> ./xmffw-debug
+```sh
+./xmffw-debug
+```
 
 If you ran `make` with `sudo` or as root, the `.env_build_cache` file might fail to write. You may need to remove it or change its permissions.
 
@@ -79,21 +94,27 @@ If you want to debug the timing aspects of the program, you can add additional t
 
 To build with timing information:
 
-> make DEBUG_TIME=1 debug
+```sh
+make DEBUG_TIME=1 debug
+```
 
-3. Debugging Environment Changes
+#### 3. Debugging Environment Changes
 
 The Makefile includes an environment caching system to track changes in build flags. If your build is not reflecting changes to environment variables, the cache system might be preventing it. You can force a clean build:
 
-> make force
+```sh
+make force
+```
 
 This will clean all debug files and force a rebuild from scratch.
 
-4. Cleaning Debug Files
+#### 4. Cleaning Debug Files
 
 To clean up after debugging:
 
-> make clean-debug
+```sh
+make clean-debug
+```
 
 This will remove all debug object files and binaries without affecting the release files.
 
