@@ -82,8 +82,8 @@
 		} while (0)
 	#else
 		#define TIME_FUNCTION_RETURN_INT(func, fmt, ...) func(__VA_ARGS__)
-		#define TIME_FUNCTION_RETURN_BOOL(func, ...) func(__VA_ARGS__)
-		#define TIME_FUNCTION_RETURN_DOUBLE(func, ...) func(__VA_ARGS__)
+		#define TIME_FUNCTION_RETURN_BOOL(func, fmt, ...) func(__VA_ARGS__)
+		#define TIME_FUNCTION_RETURN_DOUBLE(func, fmt, ...) func(__VA_ARGS__)
 		#define TIME_FUNCTION_VOID(func, ...) func(__VA_ARGS__)
 	#endif
 #else
