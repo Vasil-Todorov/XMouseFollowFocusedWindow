@@ -1,0 +1,63 @@
+# Object files
+*.o
+*.debug.o
+
+# Executable files
+xmffw
+xmffw-debug
+
+# Build cache for environment variable tracking
+.env_build_cache
+
+# Debugging and profiling files
+*.log
+*.out
+*.dSYM/
+*.stackdump
+*.core
+*.gch
+
+# Sanitizer output files
+asan.*
+tsan.*
+ubsan.*
+
+# IDE-specific
+# JetBrains IDEs (CLion, IntelliJ, PyCharm, etc.)
+.idea/
+*.iml
+
+# Eclipse
+.project
+.cproject
+.settings/
+*.launch
+
+# Code::Blocks
+*.cbp
+*.depend
+*.layout
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Xcode
+*.xcworkspace
+xcuserdata/
+*.xcuserstate
+*.xcodeproj/
+
+# Backup files
+*~
+*.bak
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db
