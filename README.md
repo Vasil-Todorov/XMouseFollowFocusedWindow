@@ -41,7 +41,7 @@ KEEP_RELATIVE_POSITION=0
 In the terminal insert these commands (The url shown may need to change depending on what repo you are reading this from)
 
 ```sh
-git clone https://github.com/Weightierharpy3/XMouseFollowFocusedWindow.git
+git clone https://github.com/Vasil-Todorov/XMouseFollowFocusedWindow.git
 ```
 ```sh
 sudo make install
@@ -129,13 +129,13 @@ This will remove all debug object files and binaries without affecting the relea
     2. SLEEPTIME is an int which decides how long the program will sleep between increments
 
 
-2. WARPOUTSIDE is a bool that decides whether or not the cursor will be sent outside of the window.1 is outside, 0 is inside
+2. WARPOUTSIDE is a bool that decides whether or not the cursor will be sent outside of the window. 1 is outside, 0 is inside.
     1. WARPXPLACE is the place that the cursor will teleport to, along the X axis. Is a percentage of the width of the window when warping inside, and a straight pixel value when warping outside.
     2. WARPYPLACE is the place that the cursor will teleport to, along the Y axis. Is a percentage of the height of the window when warping inside, and a straight pixel value when warping outside.
   
 3. KEEP_RELATIVE_POSITION is a bool that decides whether the position values for WARPXPLACE & WARPYPLACE should change to the relative position of the cursor on the current window
 
-If you are teleporting outside, whether or not WARPXPLACE and YPLACE are positive or negative decides where to teleport. Negative means to the left and on top, respectively. Positive (including 0) means to the right and below, respectively.
+If you are teleporting outside, whether or not WARPXPLACE and WARPYPLACE are positive or negative decides where to teleport. Negative means to the left and on top, respectively. Positive (including 0) means to the right and below, respectively.
 
 4. ALWAYSWARP is a bool that decides whether to always teleport the mouse to the desired location when XMFFW is invoked. 1 means always teleport, 0 means see where the cursor is, and decide if it needs teleportation. If the cursor is inside of the window or within an acceptable distance of the window, it does not get teleported.
     1. DISTANCETOLERANCE is an int that describes the distance in pixels the inf. norm from the edge of the focused window, meaning extending from the window by the value of the variable in the X and Y directions. Keep in mind that it can be negative to reduce the area of the acceptable distance.
@@ -143,7 +143,7 @@ If you are teleporting outside, whether or not WARPXPLACE and YPLACE are positiv
 ***
 
 ## <p align=center> Setup suggestions </p>
-### KDE Plasma
+### KDE Plasma (version 5.x)
 
 Using a tiling script like [Bismuth](https://github.com/Bismuth-Forge/bismuth) is recommended, but you can use the program standalone as well.
 
@@ -175,6 +175,19 @@ If you ever need to delete the program, keep in mind that that will not delete t
 
 TTY is a good option to debug this from my experience.
 ***
+### KDE Plasma (version 6.x)
+
+Using a tiling script like [Kröhnkite](https://github.com/anametologin/krohnkite/) (which has been revived for Plasma 6!) is recommended, but you have to be more creative now, since window action activated shortcuts are deprecated :(
+
+You can use XMFFW as a single action shortcut:
+
+Go to:
+> **System Settings** -> **Keyboard** -> **Shortcuts** -> **Add New** -> **Command or Script**, enter **xmffw**
+
+and you can think of different shortcuts for **xmffw** in Plasma 6.
+
+When I think of more creative implementations for  Plasma 6 I will update this readme.
+***
 ### DWM
 
 You can add the xmffw command to the appropriate shortcuts in the config.h and use it instead of a mouse warping patch, if you like some of my functionality better.
@@ -194,4 +207,5 @@ I only included ideas for the use cases I have verified to work!
 ***
 <br> </br> 
 #### I just saw your repo, and your code is absolutely terrible!
-Thanks! ~ -~ ❤
+
+Take it up with my main contributor Weightierharpy3 I have no clue what I am doing :P
