@@ -20,6 +20,7 @@ int compute_destination_y(int focusedY, int focusedHeight)
 //Returns the parent window of "window" (i.e. the ancestor of window
 //that is a direct child of the root, or window itself if it is a direct child).
 //If window is the root window, returns window.
+//Necessary because some GTK apps do weird stuff with child windows
 Window getTopLevelParent(Display *display, Window window)
 {
 	Window root;
